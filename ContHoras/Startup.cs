@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace ContHoras
 {
@@ -28,9 +31,27 @@ namespace ContHoras
         {
 
             services.AddControllers();
+            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ContHoras", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "ContHoras",
+                    Description = "A simple App ASP.NET Core Web API that controls staff works hour per project",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Roque Flores",
+                        Email = "roque1211@gmail.com",
+                        Url = new Uri("https://github.com/RoqueDesIn/ContHoras"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
             });
         }
 
